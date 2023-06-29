@@ -1,5 +1,6 @@
 import Undead from "./Undead";
 import Zombie from "./Zombie";
+import Daemon from "./Daemon";
 
 export default class Team {
 
@@ -27,35 +28,22 @@ export default class Team {
 	}
 
   *[Symbol.iterator]() {
-    // это генератор
-    // и здесь есть доступ к this
-    // остаётся лишь правильно написать yield
-    const data = [...this.members]
-    let index = 0
-    const char = yield data[index];
-    index++
-    // yield data[index]
-    // yield data[index++]
-
+    const data = [...this.members];
+	for (let i = 0; i<= data.length; i++) {
+		yield data[i]
+	}
   }
-
 }
 
 const teamGenerator = new Team();
 
 let undead = new Undead('Shakur');
 let zombie = new Zombie('Valenok')
-let zombie2 = new Zombie('Vasek')
+let demon = new Daemon('Vasek')
 
-teamGenerator.addAll(undead, zombie, zombie2);
+teamGenerator.addAll(undead, zombie, demon);
 
 const gen = teamGenerator[Symbol.iterator]();
 
 console.log(gen.next())
-console.log(gen.next())
-console.log(gen.next())
-
-// for (let i of teamGenerator) {
-// 	console.log(i)
-// }
 

@@ -22,4 +22,6 @@ import './js/class/Undead'
 
 import './js/class/Zombie'
 
+import './js/caniterate'
+
 // TODO: write your code in app.js
